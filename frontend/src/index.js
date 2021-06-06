@@ -5,6 +5,7 @@ import {createStore} from 'redux'
 import chargingReducer from './reducers/chargingReducer'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import {Provider} from 'react-redux'
+import './style.css'
 
 const today = new Date()
 

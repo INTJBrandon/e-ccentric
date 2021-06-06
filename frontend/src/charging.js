@@ -5,7 +5,7 @@ class Charging extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {active: true}
+        this.state = {start: false, stop: true}
     }
 
     updateTotal() {
@@ -18,11 +18,11 @@ class Charging extends React.Component {
 
     start() {
         
-        setInterval(() => {
+        this.totalID = setInterval(() => {
             this.updateTotal()
         }, 1000);
 
-        setInterval(() => {
+        this.lengthID = setInterval(() => {
             this.updateLength()
         }, 60000);
 
@@ -30,10 +30,17 @@ class Charging extends React.Component {
     }
 
     toggleButton() {
-        console.log("Toggled!")
+        this.setState({
+            start: !this.state.start,
+            stop: !this.state.stop
+        })
     }
 
     stop() {
+        clearInterval(this.totalID, this.lengthID)
+        this.setState({
+            stop: !this.state.stop
+        })
         console.log("Stopped")
     }
 
@@ -44,8 +51,8 @@ class Charging extends React.Component {
         
         return (
             <div>
-                <button onClick={this.start.bind(this)}>Start Charging!</button>
-                <button onClick={this.stop.bind(this)}>Stop Charging!</button>
+                <button onClick={this.start.bind(this)} className={this.state.start ? 'start' : null}>Start Charging!</button>
+                <button onClick={this.stop.bind(this)} className={this.state.stop ? 'stop' : null}>Stop Charging!</button>
                 <li>Date: {this.props.datetime}</li>
                 <li>Minutes charging: {this.props.length}</li>
                 <li>Total: ${this.props.total.toFixed(2)}</li>
