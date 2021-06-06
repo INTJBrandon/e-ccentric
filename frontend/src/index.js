@@ -6,7 +6,10 @@ import chargingReducer from './reducers/chargingReducer'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import {Provider} from 'react-redux'
 
-const initialState = {history: {}}
+const today = new Date()
+
+const initialState = {total: 0.00, datetime: today.toString(), length: 0, paid: false }
+
 const store = createStore(chargingReducer, initialState, composeWithDevTools())
 
 ReactDOM.render(

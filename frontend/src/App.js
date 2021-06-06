@@ -1,8 +1,11 @@
 import React from 'react'
+import Charging from './charging'
 
 class App extends React.Component {
   render() {
-    return "Hi"
+    return (
+      <Charging />
+    )
   }
 }
 
