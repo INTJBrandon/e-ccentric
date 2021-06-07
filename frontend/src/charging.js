@@ -10,6 +10,7 @@ class Charging extends React.Component {
     }
 
     updateTotal() {
+        debugger
         this.props.dispatch({ type: "INCREMENT_TOTAL"})
     }
 
@@ -23,6 +24,8 @@ class Charging extends React.Component {
         this.setState({
             status: "completed"
         })
+        debugger
+
     }
 
     payLater() {
@@ -36,12 +39,12 @@ class Charging extends React.Component {
     start() {
         
         this.totalID = setInterval(() => {
-            this.updateTotal()
+            this.props.startCharging()
         }, 1000);
 
-        this.lengthID = setInterval(() => {
-            this.updateLength()
-        }, 60000);
+        // this.lengthID = setInterval(() => {
+        //     this.updateLength()
+        // }, 60000);
 
         this.toggleButton()
     }
@@ -67,7 +70,6 @@ class Charging extends React.Component {
     
     
     render() {
-        
         return (
             <div>
                 <button onClick={this.start.bind(this)} className={this.state.start ? 'start' : null}>Start Charging!</button>
@@ -81,9 +83,17 @@ class Charging extends React.Component {
     }
 }
 
+function saveTransaction(state) {
+    debugger
+    return {type: "SAVE_TRANSACTION", payload: state }
+}
+
+function startCharging() {
+    return {type : "INCREMENT_TOTAL"}
+}
 
 
 function mapStateToProps(state) {
     return state
 }
-export default connect(mapStateToProps)(Charging)
+export default connect(mapStateToProps, {saveTransaction: saveTransaction, startCharging: startCharging})(Charging)
