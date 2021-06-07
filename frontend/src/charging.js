@@ -20,10 +20,16 @@ class Charging extends React.Component {
     payNow() {
         this.props.dispatch({ type: "PAY_NOW"})
         // Submit state to database paying now
+        this.setState({
+            status: "completed"
+        })
     }
 
     payLater() {
         this.props.dispatch({ type: "PAY_LATER"})
+        this.setState({
+            status: "completed"
+        })
         // Submit state to database paying later
     }
 

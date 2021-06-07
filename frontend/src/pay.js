@@ -8,6 +8,12 @@ function Pay(props) {
             </div>
         )
     }
+    else if (props.status === 'completed') {
+        return (
+            <h2>Thank you for using E-ccentric!</h2>
+        )
+        
+    }
     return null
 }
 
