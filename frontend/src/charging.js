@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Pay from './pay'
 
 class Charging extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {start: false, stop: true}
+        this.state = {start: false, stop: true, status: "unfinished"}
     }
 
     updateTotal() {
@@ -14,6 +15,16 @@ class Charging extends React.Component {
 
     updateLength() {
         this.props.dispatch({ type: "INCREMENT_LENGTH"})
+    }
+
+    payNow() {
+        this.props.dispatch({ type: "PAY_NOW"})
+        // Submit state to database paying now
+    }
+
+    payLater() {
+        this.props.dispatch({ type: "PAY_LATER"})
+        // Submit state to database paying later
     }
 
     start() {
@@ -37,9 +48,11 @@ class Charging extends React.Component {
     }
 
     stop() {
-        clearInterval(this.totalID, this.lengthID)
+        clearInterval(this.totalID)
+        clearInterval(this.lengthID)
         this.setState({
-            stop: !this.state.stop
+            stop: !this.state.stop,
+            status: "finished"
         })
         console.log("Stopped")
     }
@@ -56,6 +69,7 @@ class Charging extends React.Component {
                 <li>Date: {this.props.datetime}</li>
                 <li>Minutes charging: {this.props.length}</li>
                 <li>Total: ${this.props.total.toFixed(2)}</li>
+                <Pay status={this.state.status} callbackfn={this.payNow.bind(this)} callbackfn2={this.payLater.bind(this)}/>
             </div>
         )
     }

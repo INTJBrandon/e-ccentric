@@ -8,6 +8,14 @@ export default function chargingReducer(state, action) {
             return {
                 ...state, length: state.length + 1
             }
+
+        case "PAY_NOW":
+            return {
+                ...state, paid: true
+            }
+
+        case "PAY_LATER":
+            return state
         default:
             return state
     }
