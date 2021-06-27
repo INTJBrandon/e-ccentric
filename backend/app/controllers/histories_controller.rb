@@ -5,9 +5,10 @@ class HistoriesController < ApplicationController
     end
 
     def create
-        history = History.new(history_params)
-        if history.save
-            render json: comment
+        transaction = History.new(history_params)
+        if transaction.save
+            render json: transaction
+        end
     end
 
 

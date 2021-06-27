@@ -1,50 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Pay from './pay'
+import updateTotal from './actions/updateTotal'
+import updateLength from './actions/updateLength'
+import saveTransaction from './actions/saveTransaction'
+import payLater from './actions/payLater'
+import payNow from './actions/payNow'
 
 class Charging extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {start: false, stop: true, status: "unfinished"}
-    }
-
-    updateTotal() {
-        debugger
-        this.props.dispatch({ type: "INCREMENT_TOTAL"})
-    }
-
-    updateLength() {
-        this.props.dispatch({ type: "INCREMENT_LENGTH"})
-    }
-
-    payNow() {
-        this.props.dispatch({ type: "PAY_NOW"})
-        // Submit state to database paying now
-        this.setState({
-            status: "completed"
-        })
-        debugger
-
-    }
-
-    payLater() {
-        this.props.dispatch({ type: "PAY_LATER"})
-        this.setState({
-            status: "completed"
-        })
-        // Submit state to database paying later
+        this.start = this.start.bind(this)
+        this.stop = this.stop.bind(this)
+        this.paid = this.paid.bind(this)
+        this.unpaid = this.unpaid.bind(this)
     }
 
     start() {
         
         this.totalID = setInterval(() => {
-            this.props.startCharging()
+            this.props.updateTotal()
         }, 1000);
 
-        // this.lengthID = setInterval(() => {
-        //     this.updateLength()
-        // }, 60000);
+        this.lengthID = setInterval(() => {
+            this.props.updateLength()
+        }, 60000);
 
         this.toggleButton()
     }
@@ -66,34 +48,37 @@ class Charging extends React.Component {
         console.log("Stopped")
     }
 
+    paid() {
+        this.props.payNow()
+        this.setState({status: "completed"}, () => this.props.saveTransaction(this.props))
+    }
+
+    unpaid() {
+        this.props.payLater()
+        this.setState({status: "completed"}, () => this.props.saveTransaction(this.props))
+    }
+
     
     
     
     render() {
         return (
             <div>
-                <button onClick={this.start.bind(this)} className={this.state.start ? 'start' : null}>Start Charging!</button>
-                <button onClick={this.stop.bind(this)} className={this.state.stop ? 'stop' : null}>Stop Charging!</button>
+                <button onClick={this.start} className={this.state.start ? 'start' : null}>Start Charging!</button>
+                <button onClick={this.stop} className={this.state.stop ? 'stop' : null}>Stop Charging!</button>
                 <li>Date: {this.props.datetime}</li>
                 <li>Minutes charging: {this.props.length}</li>
                 <li>Total: ${this.props.total.toFixed(2)}</li>
-                <Pay status={this.state.status} callbackfn={this.payNow.bind(this)} callbackfn2={this.payLater.bind(this)}/>
+                <Pay status={this.state.status} callbackfn={this.paid} callbackfn2={this.unpaid}/>
             </div>
         )
     }
 }
 
-function saveTransaction(state) {
-    debugger
-    return {type: "SAVE_TRANSACTION", payload: state }
-}
 
-function startCharging() {
-    return {type : "INCREMENT_TOTAL"}
-}
 
 
 function mapStateToProps(state) {
     return state
 }
-export default connect(mapStateToProps, {saveTransaction: saveTransaction, startCharging: startCharging})(Charging)
+export default connect(mapStateToProps, {saveTransaction: saveTransaction, updateTotal: updateTotal, updateLength: updateLength, payNow: payNow, payLater: payLater})(Charging)

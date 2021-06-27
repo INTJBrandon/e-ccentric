@@ -1,4 +1,4 @@
-export default function chargingReducer(state, action) {
+export default function chargingReducer(state, action, payload) {
     switch (action.type) {
         case "INCREMENT_TOTAL":
             return {
@@ -13,9 +13,13 @@ export default function chargingReducer(state, action) {
             return {
                 ...state, paid: true
             }
-
         case "PAY_LATER":
             return state
+        case "SAVE_TRANSACTION":
+            debugger
+            return {
+                ...state, transactions: payload
+            }
         default:
             return state
     }
