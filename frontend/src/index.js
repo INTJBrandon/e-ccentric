@@ -6,6 +6,7 @@ import thunk from 'redux-thunk'
 import chargingReducer from './reducers/chargingReducer'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import {Provider} from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import './style.css'
 

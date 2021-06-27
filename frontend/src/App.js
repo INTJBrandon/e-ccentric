@@ -1,6 +1,6 @@
 import React from 'react'
-import Charging from './charging'
-import Transactions from './transactions'
+import Charging from './Charging'
+import Transactions from './Transactions'
 
 class App extends React.Component {
   render() {
