@@ -18,9 +18,11 @@ const initialState = {total: 0.00, datetime: today.toString(), length: 0, paid: 
 const store = createStore(chargingReducer, initialState, compose(applyMiddleware(thunk), composeWithDevTools()))
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App /> 
-  </Provider>,
+  <Router >
+    <Provider store={store}>
+      <App /> 
+    </Provider>
+  </Router>,
   document.getElementById('root')
 );
 
