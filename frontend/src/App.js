@@ -3,6 +3,7 @@ import Charging from './Charging'
 import Transactions from './Transactions'
 import { Route } from 'react-router-dom'
 import NavBar from './navbar'
+import Estimate from './Estimate'
 
 class App extends React.Component {
   render() {
@@ -12,7 +13,10 @@ class App extends React.Component {
         <Route path="/transactions">
           <Transactions />
         </Route>
-        <Route path="/home" render={function(routerProps) { return <Charging />}}/>
+        <Route path="/charge" render={function(routerProps) { return <Charging />}}/>
+        <Route path="/home">
+          <Estimate />
+        </Route>
       </>
       
     )
