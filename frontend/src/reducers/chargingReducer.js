@@ -20,7 +20,6 @@ export default function chargingReducer(state, action) {
         case "PAY_LATER":
             return state
         case "SAVE_TRANSACTION":
-            debugger
             return {
                 ...state,
                     transactions: [...state.transactions, action.payload]

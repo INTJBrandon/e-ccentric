@@ -3,7 +3,7 @@ export default function saveTransaction(props) {
         transaction: {
             total: props.total,
             length: props.length,
-            date: props.date,
+            date: props.datetime,
             paid: props.paid
         }
     }
