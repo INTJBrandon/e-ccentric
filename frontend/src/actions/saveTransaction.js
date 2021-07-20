@@ -1,6 +1,6 @@
 export default function saveTransaction(props) {
     const body = {
-        history: {
+        transaction: {
             total: props.total,
             length: props.length,
             date: props.date,
@@ -9,7 +9,7 @@ export default function saveTransaction(props) {
     }
     return function(dispatch) {
         
-        fetch("http://127.0.0.1:3000/histories", {
+        fetch("http://127.0.0.1:3000/transactions", {
             method: "POST",
             headers: {Accept: "application/json", "Content-type": "application/json"},
             body: JSON.stringify(body)

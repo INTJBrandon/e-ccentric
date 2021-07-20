@@ -12,10 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_06_03_053113) do
 
-  create_table "histories", force: :cascade do |t|
-    t.integer "total"
+  create_table "transactions", force: :cascade do |t|
+    t.float "total"
     t.integer "length"
-    t.datetime "date"
+    t.string "date"
     t.boolean "paid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
