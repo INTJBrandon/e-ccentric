@@ -11,9 +11,6 @@ class Transactions extends React.Component {
     render() {
         
         return (
-            // <div>
-            //     {this.props.transactions && this.props.transactions.map(transaction => <li>Id: {transaction.id} - Total: {transaction.total} - Length: {transaction.length} Minutes Charging - Status: {transaction.paid.toString()} - Date: {transaction.created_at} </li>)}
-            // </div>
             <div>
                 {this.props.transactions && this.props.transactions.map(transaction => <li key={transaction.id}>Total: {transaction.total} - Length: {transaction.length} Minutes Charging - Status: {transaction.paid.toString()} - Date: {transaction.date} </li>)}
             </div>
