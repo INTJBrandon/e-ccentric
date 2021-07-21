@@ -1,7 +1,7 @@
 export default function saveTransaction(props) {
     const body = {
         transaction: {
-            total: props.total,
+            total: props.total.toFixed(2),
             length: props.length,
             date: props.datetime,
             paid: props.paid

@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_06_03_053113) do
 
   create_table "transactions", force: :cascade do |t|
-    t.float "total"
+    t.string "total"
     t.integer "length"
     t.string "date"
     t.boolean "paid"
