@@ -4,11 +4,9 @@ class Estimate extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {value: ''}
+        this.state = {value: '', estimated: false}
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.state = {estimated: false}
-
     }
 
     handleChange(event) {
@@ -30,14 +28,11 @@ class Estimate extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Price Estimate: 
-                        <input type="number" value={this.state.value} onChange={this.handleChange} name="estimate"></input>
+                        <input type="number" value={this.state.value} onChange={this.handleChange}></input>
                     </label>
                     <input type="submit" value="Estimate"></input>
                 </form>
-                {this.state.estimated && 
-                    <h1>Estimated Price: {this.state.estimated}</h1>
-                }
-                
+                {this.state.estimated && <h1>Estimated Price: ${this.state.estimated}</h1>}
             </>
         )
     }

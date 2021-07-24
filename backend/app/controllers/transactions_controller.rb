@@ -6,7 +6,6 @@ class TransactionsController < ApplicationController
 
     def create
         transaction = Transaction.new(transaction_params)
-        byebug
         if transaction.save
             render json: transaction
         end

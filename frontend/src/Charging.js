@@ -47,6 +47,7 @@ class Charging extends React.Component {
             status: "finished"
         })
         console.log("Stopped")
+        debugger
     }
 
     paid() {
