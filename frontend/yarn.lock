@@ -7322,6 +7322,11 @@
     "inherits" "^2.0.1"
     "safe-buffer" "^5.1.2"
 
+"mdb-ui-kit@^3.9.0":
+  "integrity" "sha512-EZp+c8vav985BMLQh31X/MD+ERzZgtd6e59dXXXFFDGp0I3PoeL//12RgHYbXxEKPx4AvJa4LU6NY8xpAzxaoQ=="
+  "resolved" "https://registry.npmjs.org/mdb-ui-kit/-/mdb-ui-kit-3.9.0.tgz"
+  "version" "3.9.0"
+
 "mdn-data@2.0.14":
   "integrity" "sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow=="
   "resolved" "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz"

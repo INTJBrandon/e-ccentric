@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom'
 import NavBar from './navbar'
 import Estimate from './Estimate'
 import Footer from './footer'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 class App extends React.Component {
   render() {
