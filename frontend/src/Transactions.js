@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import fetchTransactions from './actions/fetchTransactions'
+import { Container, Table } from 'react-bootstrap'
 
 class Transactions extends React.Component {
     componentDidMount() {
@@ -11,9 +12,30 @@ class Transactions extends React.Component {
     render() {
         
         return (
-            <div>
-                {this.props.transactions && this.props.transactions.map(transaction => <li key={transaction.id}>Total: ${transaction.total} - Length: {transaction.length} Minutes Charging - Status: {transaction.paid.toString()} - Date: {transaction.date} </li>)}
-            </div>
+            <Container>
+            <h1>Transaction History</h1>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Total</th>
+                        <th>Length</th>
+                        <th>Paid</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {this.props.transactions && this.props.transactions.map(transaction => 
+                    <tr key={transaction.id}>
+                        <td>{transaction.id}</td>
+                        <td>${transaction.total}</td>
+                        <td>{transaction.length} Minute(s)</td>
+                        <td>{transaction.paid.toString()}</td>
+                        <td>{transaction.date}</td>
+                    </tr>)}
+                </tbody>
+            </Table>
+            </Container>
         )
     }
 }

@@ -20,6 +20,10 @@
     width: 27%;
 }
 
+h1 {
+    text-align: center;
+}
+
 .pay-button {
     margin: 5px;
 }

@@ -20,6 +20,10 @@ class Charging extends React.Component {
         this.unpaid = this.unpaid.bind(this)
     }
 
+    componentWillUnmount() {
+        
+    }
+
     start() {
         
         this.totalID = setInterval(() => {
@@ -68,9 +72,6 @@ class Charging extends React.Component {
         return (
             <>
             <Container className="charging-center">
-                {/* <li>Date: {this.props.datetime}</li>
-                <li>Minutes charging: {this.props.length}</li>
-                <li>Total: ${this.props.total.toFixed(2)}</li> */}
                 <Card className="text-center">
                 <Card.Header>E-ccentric Charging Station</Card.Header>
                 <Card.Body>
