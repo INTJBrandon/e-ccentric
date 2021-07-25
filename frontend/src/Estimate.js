@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Row, Col, Button, Container } from 'react-bootstrap'
+import { Form, Row, Col, Button, Container, Alert} from 'react-bootstrap'
 
 class Estimate extends React.Component {
 
@@ -28,7 +28,7 @@ class Estimate extends React.Component {
             <>
                 <Container className="center"> 
                     <form onSubmit={this.handleSubmit}>
-                            <Row class="align-items-center">
+                            <Row className="align-items-center">
                                 <Col sm={6} className="my-1">
                                     <Form.Label htmlFor="inlineFormInputName" visuallyHidden>
                                         name
@@ -36,11 +36,16 @@ class Estimate extends React.Component {
                                     <Form.Control type="number" id="inlineFormInputName" placeholder="Price Estimate: Minutes" value={this.state.value} onChange={this.handleChange} />
                                 </Col>
                                 <Col xs={4} className="my-1">
-                                <Button variant="success" type="submit" className="mb-2">Estimate!</Button>
+                                <Button variant="success" type="submit" className="my-3">Estimate!</Button>
                                 </Col>
                             </Row>
                         </form>
-                        {this.state.estimated && <h1>Estimated Price: ${this.state.estimated}</h1>}
+                        <Row className="align-items-center">
+                            <Col sm={5} className="my-1">
+                                {this.state.estimated && <Alert variant="success">Estimated Price: ${this.state.estimated}</Alert>}
+                            </Col>
+                        </Row>
+                        
                 </Container>
             </>
         )

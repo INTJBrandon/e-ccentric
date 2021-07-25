@@ -6,6 +6,7 @@ import updateLength from './actions/updateLength'
 import saveTransaction from './actions/saveTransaction'
 import payLater from './actions/payLater'
 import payNow from './actions/payNow'
+import { Container } from 'react-bootstrap'
 
 
 class Charging extends React.Component {
@@ -65,14 +66,16 @@ class Charging extends React.Component {
     
     render() {
         return (
-            <div>
+            <>
+            <Container>
                 <button onClick={this.start} className={this.state.start ? 'start' : null}>Start Charging!</button>
                 <button onClick={this.stop} className={this.state.stop ? 'stop' : null}>Stop Charging!</button>
                 <li>Date: {this.props.datetime}</li>
                 <li>Minutes charging: {this.props.length}</li>
                 <li>Total: ${this.props.total.toFixed(2)}</li>
                 <Pay status={this.state.status} callbackfn={this.paid} callbackfn2={this.unpaid}/>
-            </div>
+            </Container> 
+            </>
         )
     }
 }
