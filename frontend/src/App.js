@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import NavBar from './navbar'
 import Estimate from './Estimate'
 import Footer from './footer'
+import Banner from './banner'
 
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
         </Route>
         <Route path="/charge" render={function(routerProps) { return <Charging />}}/>
         <Route path="/home">
+          <Banner />
           <Estimate />
         </Route>
         <Footer />

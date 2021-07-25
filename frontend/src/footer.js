@@ -1,5 +1,3 @@
-
-
 export default function Footer(props) {
     return (
         <footer class="bg-dark text-center text-white footer">
