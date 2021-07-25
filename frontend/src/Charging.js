@@ -6,7 +6,7 @@ import updateLength from './actions/updateLength'
 import saveTransaction from './actions/saveTransaction'
 import payLater from './actions/payLater'
 import payNow from './actions/payNow'
-import { Container } from 'react-bootstrap'
+import { Container, Button, Card } from 'react-bootstrap'
 
 
 class Charging extends React.Component {
@@ -67,13 +67,23 @@ class Charging extends React.Component {
     render() {
         return (
             <>
-            <Container>
-                <button onClick={this.start} className={this.state.start ? 'start' : null}>Start Charging!</button>
-                <button onClick={this.stop} className={this.state.stop ? 'stop' : null}>Stop Charging!</button>
-                <li>Date: {this.props.datetime}</li>
+            <Container className="charging-center">
+                {/* <li>Date: {this.props.datetime}</li>
                 <li>Minutes charging: {this.props.length}</li>
-                <li>Total: ${this.props.total.toFixed(2)}</li>
-                <Pay status={this.state.status} callbackfn={this.paid} callbackfn2={this.unpaid}/>
+                <li>Total: ${this.props.total.toFixed(2)}</li> */}
+                <Card className="text-center">
+                <Card.Header>E-ccentric Charging Station</Card.Header>
+                <Card.Body>
+                    <Card.Title>Total Cost: ${this.props.total.toFixed(2)}</Card.Title>
+                    <Card.Text>
+                        Minutes Charging: {this.props.length}
+                    </Card.Text>
+                    <Button variant="success" onClick={this.start} className={this.state.start ? 'start' : null}>Start Charging</Button>
+                    <Button variant="danger"onClick={this.stop} className={this.state.stop ? 'stop' : null}>Stop Charging!</Button>
+                    <Pay status={this.state.status} callbackfn={this.paid} callbackfn2={this.unpaid}/>
+                </Card.Body>
+                <Card.Footer className="text-muted">{this.props.datetime}</Card.Footer>
+                </Card>
             </Container> 
             </>
         )

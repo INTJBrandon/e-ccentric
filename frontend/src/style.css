@@ -12,9 +12,16 @@
     height: 20px;
 }
 
-.img {
-    height: 1800;
-    width: 2880;
+.charging-center {
+    position:absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+    height: 20px;
+    width: 27%;
+}
+
+.pay-button {
+    margin: 5px;
 }
 
 .start {

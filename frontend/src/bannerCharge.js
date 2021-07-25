@@ -5,7 +5,7 @@ export default function bannerCharge(props) {
             <Carousel.Item>
                 <img
                 className="d-block w-100"
-                src="https://imgix.bustle.com/uploads/image/2020/9/17/d22b84d5-67cd-472c-836b-ad9b6de15e13-3840x2160-sandx-supercharger-countryside.jpg?w=2000&h=640&fit=crop&crop=faces&auto=format%2Ccompress"
+                src="https://tesla-cdn.thron.com/delivery/public/image/tesla/1035e344-82ec-4b61-8988-3dd8464beaa9/bvlatuR/std/2880x1620/Main-Charging-HomeCharging-Desktop"
                 alt="Second slide"
                 />
             </Carousel.Item>
