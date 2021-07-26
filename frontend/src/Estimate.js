@@ -42,7 +42,8 @@ class Estimate extends React.Component {
                         </form>
                         <Row className="align-items-center">
                             <Col sm={5} className="my-1">
-                                {this.state.estimated && <Alert variant="success">Estimated Price: ${this.state.estimated}</Alert>}
+                                {this.state.estimated > 0 && <Alert variant="success">Estimated Price: ${this.state.estimated}</Alert>}
+                                {this.state.estimated <= 0 && this.state.estimated && <Alert variant="danger">Please enter a number larger than 0</Alert>}
                             </Col>
                         </Row>
                         

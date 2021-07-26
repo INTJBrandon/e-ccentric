@@ -4,6 +4,10 @@ export default function chargingReducer(state, action) {
             return {
                 ...state, transactions: action.payload
             }
+        case "CURRENT_TIME":
+            return {
+                ...state, datetime: new Date().toLocaleString()
+            }
         case "INCREMENT_TOTAL":
             return {
                 ...state, total: state.total + 0.0043333333333333

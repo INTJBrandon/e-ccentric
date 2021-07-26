@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Pay from './pay'
 import updateTotal from './actions/updateTotal'
 import updateLength from './actions/updateLength'
+import updateTime from './actions/updateTime'
 import saveTransaction from './actions/saveTransaction'
 import payLater from './actions/payLater'
 import payNow from './actions/payNow'
@@ -21,13 +22,17 @@ class Charging extends React.Component {
     }
 
     componentWillUnmount() {
-        
+
     }
 
     start() {
         
         this.totalID = setInterval(() => {
             this.props.updateTotal()
+        }, 1000);
+
+        this.timeID = setInterval(() => {
+            this.props.updateTime()
         }, 1000);
 
         this.lengthID = setInterval(() => {
@@ -47,6 +52,7 @@ class Charging extends React.Component {
     stop() {
         clearInterval(this.totalID)
         clearInterval(this.lengthID)
+        clearInterval(this.timeID)
         this.setState({
             stop: !this.state.stop,
             status: "finished"
@@ -97,4 +103,4 @@ class Charging extends React.Component {
 function mapStateToProps(state) {
     return state
 }
-export default connect(mapStateToProps, {saveTransaction: saveTransaction, updateTotal: updateTotal, updateLength: updateLength, payNow: payNow, payLater: payLater})(Charging)
+export default connect(mapStateToProps, {saveTransaction: saveTransaction, updateTotal: updateTotal, updateLength: updateLength, payNow: payNow, payLater: payLater, updateTime: updateTime})(Charging)
