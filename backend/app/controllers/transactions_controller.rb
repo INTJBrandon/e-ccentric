@@ -11,6 +11,11 @@ class TransactionsController < ApplicationController
         end
     end
 
+    def update 
+        transaction = Transaction.find_by(id: params[:id])
+        transaction.update(transaction_params)
+    end
+
 
     def transaction_params
         params.require(:transaction).permit(:total, :length, :date, :paid)

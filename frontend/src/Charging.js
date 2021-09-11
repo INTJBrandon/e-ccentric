@@ -103,4 +103,5 @@ class Charging extends React.Component {
 function mapStateToProps(state) {
     return state
 }
+
 export default connect(mapStateToProps, {saveTransaction: saveTransaction, updateTotal: updateTotal, updateLength: updateLength, payNow: payNow, payLater: payLater, updateTime: updateTime})(Charging)

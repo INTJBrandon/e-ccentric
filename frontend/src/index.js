@@ -18,7 +18,7 @@ const initialState = {total: 0.00, datetime: today.toLocaleString(), length: 0, 
 const store = createStore(chargingReducer, initialState, compose(applyMiddleware(thunk), composeWithDevTools()))
 
 ReactDOM.render(
-  <Router >
+  <Router>
     <Provider store={store}>
       <App /> 
     </Provider>
