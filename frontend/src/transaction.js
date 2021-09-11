@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { paid } from './Charging'
 
 export default class Transaction extends React.Component {
     constructor(props) {
@@ -12,6 +11,10 @@ export default class Transaction extends React.Component {
     upvote() {
         const value = this.state.upvote
         this.setState({upvote: value + 1})
+    }
+
+    updateStatus() {
+        
     }
 
 
@@ -27,10 +30,11 @@ export default class Transaction extends React.Component {
                 {paid ? (
                     <td>Paid</td>
                 ): (
-                    <td><Button onClick={this.upvote}>Pay Now!</Button></td>
+                    <td><Button onClick={this.updateStatus}>Pay Now!</Button></td>
                 )}
                     
             </tr>
         )
     }
 }
+
