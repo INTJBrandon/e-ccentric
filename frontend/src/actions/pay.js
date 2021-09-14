@@ -10,11 +10,11 @@ export default function updateStatus(props) {
     }
     return function(dispatch) {
         fetch("http://127.0.0.1:3000/transactions", {
-            method: "POST",
+            method: "PATCH",
             headers: {Accept: "application/json", "Content-type": "application/json"},
             body: JSON.stringify(body)
         }).then(resp => resp.json())
-        .then(transaction => dispatch({type: "SAVE_TRANSACTION", payload: transaction}))
+        .then(transaction => dispatch({type: "PAY", payload: transaction}))
         
 
     }

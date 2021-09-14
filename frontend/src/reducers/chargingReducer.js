@@ -28,6 +28,9 @@ export default function chargingReducer(state, action) {
                 ...state,
                     transactions: [...state.transactions, action.payload]
             }
+        case "PAY":
+            return state
+            
         default:
             return state
     }
