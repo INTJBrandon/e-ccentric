@@ -12,7 +12,9 @@ class Transaction extends React.Component {
     }
     componentDidUpdate() {
         if (!this.props.info.paid) {
-            this.props.fetchTransactions()
+            if (this.state.status) {
+                this.props.fetchTransactions()
+            }
         }
     }
 
@@ -33,7 +35,7 @@ class Transaction extends React.Component {
                 {paid ? (
                     <td>Paid</td>
                 ): (
-                    <td><Button onClick={this.payTransaction}>Pay Now!</Button></td>
+                    <td><Button size="sm" onClick={this.payTransaction}>Pay Now!</Button></td>
                 )}
             </tr>
         )
