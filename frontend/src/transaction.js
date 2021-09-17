@@ -1,20 +1,23 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import pay from './actions/pay'
+import fetchTransactions from './actions/fetchTransactions'
 
-export default class Transaction extends React.Component {
+class Transaction extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {upvote: 0}
-        this.upvote = this.upvote.bind(this)
+        this.payTransaction = this.payTransaction.bind(this)
+        this.state = { status: this.props.info.paid}
+    }
+    componentDidUpdate() {
+        if (!this.props.info.paid) {
+            this.props.fetchTransactions()
+        }
     }
 
-    upvote() {
-        const value = this.state.upvote
-        this.setState({upvote: value + 1})
-    }
-
-    updateStatus() {
-        
+    payTransaction() {
+        this.setState({status: true}, () => this.props.pay(this.props.info))
     }
 
 
@@ -30,11 +33,12 @@ export default class Transaction extends React.Component {
                 {paid ? (
                     <td>Paid</td>
                 ): (
-                    <td><Button onClick={this.updateStatus}>Pay Now!</Button></td>
+                    <td><Button onClick={this.payTransaction}>Pay Now!</Button></td>
                 )}
-                    
             </tr>
         )
     }
 }
+
+export default connect(null, {pay: pay, fetchTransactions: fetchTransactions})(Transaction)
 

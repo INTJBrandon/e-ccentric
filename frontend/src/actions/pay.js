@@ -1,15 +1,15 @@
-export default function updateStatus(props) {
+export default function pay(props) {
     const body = {
         transaction: {
-            id: props.info.id,
-            total: props.info.total.toFixed(2),
-            length: props.info.length,
-            date: props.info.datetime,
-            paid: props.info.paid
+            id: props.id,
+            total: props.total,
+            length: props.length,
+            date: props.datetime,
+            paid: true
         }
     }
     return function(dispatch) {
-        fetch("http://127.0.0.1:3000/transactions", {
+        fetch(`http://127.0.0.1:3000/transactions/${props.id}`, {
             method: "PATCH",
             headers: {Accept: "application/json", "Content-type": "application/json"},
             body: JSON.stringify(body)
