@@ -16,6 +16,13 @@ export default function chargingReducer(state, action) {
             return {
                 ...state, length: state.length + 1
             }
+        case "RESET":
+            return {
+                ...state, datetime: new Date().toLocaleString(),
+                length: 0,
+                paid: false,
+                total: 0
+            }
 
         case "PAY_NOW":
             return {

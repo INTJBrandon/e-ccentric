@@ -7,6 +7,7 @@ import updateTime from './actions/updateTime'
 import saveTransaction from './actions/saveTransaction'
 import payLater from './actions/payLater'
 import payNow from './actions/payNow'
+import reset from './actions/reset'
 import { Container, Button, Card } from 'react-bootstrap'
 
 
@@ -22,7 +23,10 @@ class Charging extends React.Component {
     }
 
     componentWillUnmount() {
-
+        this.props.reset()
+        clearInterval(this.totalID)
+        clearInterval(this.lengthID)
+        clearInterval(this.timeID)
     }
 
     start() {
@@ -102,4 +106,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, {saveTransaction: saveTransaction, updateTotal: updateTotal, updateLength: updateLength, payNow: payNow, payLater: payLater, updateTime: updateTime})(Charging)
+export default connect(mapStateToProps, {saveTransaction: saveTransaction, updateTotal: updateTotal, updateLength: updateLength, payNow: payNow, payLater: payLater, updateTime: updateTime, reset: reset})(Charging)
