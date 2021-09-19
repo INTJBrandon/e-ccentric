@@ -12,7 +12,7 @@ export default function Footer(props) {
                 </section>
             </div>
             <div className="text-center p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
-                © 2020 Brandon Tyus |  
+                © 2021 Brandon Tyus |  
                 <a className="text-white" href="/home" style={{textDecoration: "none"}}>  E-ccentric</a>
             </div>
         </footer>
