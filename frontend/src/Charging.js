@@ -8,6 +8,7 @@ import saveTransaction from './actions/saveTransaction'
 import payLater from './actions/payLater'
 import payNow from './actions/payNow'
 import reset from './actions/reset'
+
 import { Container, Button, Card } from 'react-bootstrap'
 
 
@@ -23,6 +24,9 @@ class Charging extends React.Component {
     }
 
     componentWillUnmount() {
+        if (this.props.ongoing){
+            this.toggleButton()
+        }
         this.props.reset()
         clearInterval(this.totalID)
         clearInterval(this.lengthID)
@@ -42,6 +46,7 @@ class Charging extends React.Component {
         this.lengthID = setInterval(() => {
             this.props.updateLength()
         }, 60000);
+        this.props.ongoingSwitch()
 
         this.toggleButton()
     }
