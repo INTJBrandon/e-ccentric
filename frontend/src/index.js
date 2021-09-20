@@ -12,7 +12,7 @@ import './style.css'
 
 const today = new Date()
 
-const initialState = {total: 0.00, datetime: today.toLocaleString(), length: 0, paid: false, transactions: [] }
+const initialState = {ongoing: false, total: 0.00, datetime: today.toLocaleString(), length: 0, paid: false, transactions: [] }
 
 
 const store = createStore(chargingReducer, initialState, compose(applyMiddleware(thunk), composeWithDevTools()))

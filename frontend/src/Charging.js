@@ -87,7 +87,7 @@ class Charging extends React.Component {
                     <Card.Text>
                         Minutes Charging: {this.props.length}
                     </Card.Text>
-                    <Button variant="success" onClick=  {this.start} className={this.state.start ? 'start' : null}>Start Charging</Button>
+                    <Button variant="success" onClick={this.start} className={this.state.start ? 'start' : null}>Start Charging</Button>
                     <Button variant="danger"onClick={this.stop} className={this.state.stop ? 'stop' : null}>Stop Charging!</Button>
                     <Pay status={this.state.status} callbackfn={this.paid} callbackfn2={this.unpaid}/>
                 </Card.Body>
