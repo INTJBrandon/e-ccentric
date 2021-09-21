@@ -8,9 +8,7 @@ import saveTransaction from './actions/saveTransaction'
 import payLater from './actions/payLater'
 import payNow from './actions/payNow'
 import reset from './actions/reset'
-
 import { Container, Button, Card } from 'react-bootstrap'
-
 
 class Charging extends React.Component {
 
@@ -23,14 +21,17 @@ class Charging extends React.Component {
         this.unpaid = this.unpaid.bind(this)
     }
 
-    componentWillUnmount() {
-        if (this.props.ongoing){
+    componentDidMount() {
+        if (this.props.ongoing) {
             this.toggleButton()
         }
-        this.props.reset()
-        clearInterval(this.totalID)
-        clearInterval(this.lengthID)
-        clearInterval(this.timeID)
+    }
+
+    componentWillUnmount() {
+            this.props.reset()
+            clearInterval(this.totalID)
+            clearInterval(this.lengthID)
+            clearInterval(this.timeID)
     }
 
     start() {
@@ -66,6 +67,7 @@ class Charging extends React.Component {
             stop: !this.state.stop,
             status: "finished"
         })
+        this.props.ongoingSwitch()
     }
 
     paid() {

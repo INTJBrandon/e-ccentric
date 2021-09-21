@@ -23,7 +23,6 @@ export default function chargingReducer(state, action) {
                 paid: false,
                 total: 0
             }
-
         case "PAY_NOW":
             return {
                 ...state, paid: true
