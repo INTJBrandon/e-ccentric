@@ -5,9 +5,24 @@ import { Container, Table } from 'react-bootstrap'
 import Transaction from './transaction'
 
 class Transactions extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {currentPage: 1, transPerPage: 2}
+
+    }
+
     componentDidMount() {
         this.props.fetchTransactions()
     }
+
+    currentTransactions() {
+        const indexOfLastTransaction = this.state.currentPage * this.state.transPerPage
+        const indexOfFirstTransaction = indexOfLastTransaction - this.state.transPerPage
+        const currentTransactions = this.props.transactions.slice(indexOfFirstTransaction, indexOfLastTransaction)
+        console.log(currentTransactions)
+    }
+
     
     render() {
         
