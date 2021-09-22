@@ -47,7 +47,6 @@ class Charging extends React.Component {
         this.lengthID = setInterval(() => {
             this.props.updateLength()
         }, 60000);
-        this.props.ongoingSwitch()
 
         this.toggleButton()
     }
@@ -67,7 +66,6 @@ class Charging extends React.Component {
             stop: !this.state.stop,
             status: "finished"
         })
-        this.props.ongoingSwitch()
     }
 
     paid() {

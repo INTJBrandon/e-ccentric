@@ -8,19 +8,21 @@ class Transactions extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {currentPage: 1, transPerPage: 2}
+        this.state = {currentPage: 1, transPerPage: 10, paginationTransactions: []}
 
     }
 
     componentDidMount() {
         this.props.fetchTransactions()
+        this.currentTransactions()
+        
     }
 
     currentTransactions() {
         const indexOfLastTransaction = this.state.currentPage * this.state.transPerPage
         const indexOfFirstTransaction = indexOfLastTransaction - this.state.transPerPage
-        const currentTransactions = this.props.transactions.slice(indexOfFirstTransaction, indexOfLastTransaction)
-        console.log(currentTransactions)
+        const paginationTransactions = this.props.transactions.slice(indexOfFirstTransaction, indexOfLastTransaction)
+        this.setState({paginationTransactions: paginationTransactions})
     }
 
     
@@ -40,7 +42,7 @@ class Transactions extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                {this.props.transactions && this.props.transactions.map(transaction => <Transaction info={transaction} key={transaction.id}/>
+                {this.state.paginationTransactions && this.state.paginationTransactions.map(transaction => <Transaction info={transaction} key={transaction.id}/>
                     )}
                 </tbody>
             </Table>
