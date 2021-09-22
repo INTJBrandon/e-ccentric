@@ -8,21 +8,34 @@ class Transactions extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {currentPage: 1, transPerPage: 10, paginationTransactions: []}
+        this.state = {currentPage: 1, transPerPage: 20, paginationTransactions: [], status: false}
+        this.currentTransactions = this.currentTransactions.bind(this)
 
     }
 
     componentDidMount() {
         this.props.fetchTransactions()
-        this.currentTransactions()
-        
     }
+
+    componentDidUpdate() {
+        if (!this.state.status) {
+            this.setState({status: true})
+        }
+        if (this.state.paginationTransactions.length <= 0 && this.props.transactions.length > 0) {
+            this.currentTransactions()
+        }
+    }
+
 
     currentTransactions() {
         const indexOfLastTransaction = this.state.currentPage * this.state.transPerPage
         const indexOfFirstTransaction = indexOfLastTransaction - this.state.transPerPage
         const paginationTransactions = this.props.transactions.slice(indexOfFirstTransaction, indexOfLastTransaction)
         this.setState({paginationTransactions: paginationTransactions})
+    }
+
+    updatePage() {
+
     }
 
     
