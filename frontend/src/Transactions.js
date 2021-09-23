@@ -34,10 +34,6 @@ class Transactions extends React.Component {
         this.setState({paginationTransactions: paginationTransactions})
     }
 
-    updatePage() {
-
-    }
-
     
     render() {
         
