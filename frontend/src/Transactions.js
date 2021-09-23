@@ -8,7 +8,7 @@ class Transactions extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {currentPage: 1, transPerPage: 20, paginationTransactions: [], status: false}
+        this.state = {currentPage: 1, transPerPage: 10, paginationTransactions: [], status: false}
         this.currentTransactions = this.currentTransactions.bind(this)
 
     }
